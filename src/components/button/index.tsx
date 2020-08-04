@@ -17,35 +17,41 @@ interface IBaseButtonProps {
   className?: string;
   disabled?: boolean;
   size?: ButtonSize;
-  type?: ButtonType;
+  btnType?: ButtonType;
   text?: string;
   href?: string;
   children?: React.ReactNode;
 }
 
-const Button: React.FC<IBaseButtonProps> = (props) => {
-  const { disabled, size, type, text, children, href } = props;
+type NativeButtonAttribute = React.ButtonHTMLAttributes<HTMLElement> & IBaseButtonProps;
+type NativeAnchorAttribute = React.AnchorHTMLAttributes<HTMLElement> & IBaseButtonProps;
+
+export type ButtonProps = Partial<NativeAnchorAttribute & NativeButtonAttribute>;
+
+const Button: React.FC<ButtonProps> = (props) => {
+  const { disabled, size, btnType, text, children, href, className, ...restProps } = props;
   const classes = classnames(
     'btn',
+    className,
     {
       [`btn-${size}`]: size
     },
     {
-      [`btn-${type}`]: type
+      [`btn-${btnType}`]: btnType
     },
     {
-      disabled: disabled && type === ButtonType.Link
+      disabled: disabled && btnType === ButtonType.Link
     }
   );
-  if (type === ButtonType.Link && href) {
+  if (btnType === ButtonType.Link && href) {
     return (
-      <a href={href} className={classes}>
+      <a href={href} className={classes} {...restProps}>
         {children || text}
       </a>
     );
   } else {
     return (
-      <button className={classes} disabled={disabled}>
+      <button className={classes} disabled={disabled} {...restProps}>
         {children || text}
       </button>
     );
@@ -54,7 +60,7 @@ const Button: React.FC<IBaseButtonProps> = (props) => {
 
 Button.defaultProps = {
   disabled: false,
-  type: ButtonType.Default,
+  btnType: ButtonType.Default,
   text: 'button'
 };
 
