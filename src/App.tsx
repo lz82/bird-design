@@ -83,25 +83,47 @@ function App() {
       <br />
       <br />
       <h1>Link Button</h1>
-      <Button btnType={ButtonType.Link} size={ButtonSize.Large}>
+      <Button btnType={ButtonType.Link} href="http://www.baidu.com" size={ButtonSize.Large}>
         large Link button
       </Button>
       &nbsp;
-      <Button disabled btnType={ButtonType.Link} size={ButtonSize.Large}>
+      <Button
+        disabled
+        btnType={ButtonType.Link}
+        href="http://www.baidu.com"
+        size={ButtonSize.Large}
+      >
         large Link button
       </Button>
       &nbsp;
-      <Button btnType={ButtonType.Link}>normal Link button</Button>
-      &nbsp;
-      <Button disabled btnType={ButtonType.Link}>
+      <Button btnType={ButtonType.Link} href="http://www.baidu.com">
         normal Link button
       </Button>
       &nbsp;
-      <Button btnType={ButtonType.Link} size={ButtonSize.Small}>
+      <Button disabled btnType={ButtonType.Link} href="http://www.baidu.com">
+        normal Link button
+      </Button>
+      &nbsp;
+      <Button
+        btnType={ButtonType.Link}
+        size={ButtonSize.Small}
+        href="http://www.baidu.com"
+        onClick={() => {
+          console.log('aaa');
+        }}
+      >
         small Link button
       </Button>
       &nbsp;
-      <Button disabled btnType={ButtonType.Link} size={ButtonSize.Small}>
+      <Button
+        disabled
+        btnType={ButtonType.Link}
+        href="http://www.baidu.com"
+        size={ButtonSize.Small}
+        onClick={() => {
+          console.log('aaa');
+        }}
+      >
         small Link button
       </Button>
     </div>
