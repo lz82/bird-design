@@ -22,8 +22,8 @@ const MenuItem: React.FC<IMenuItemProps> = (props) => {
   );
 
   const onClick = () => {
-    if (ctx.onSelect && typeof ctx.onSelect === 'function') {
-      ctx.onSelect(props, id || '');
+    if (ctx.onSelect && typeof ctx.onSelect === 'function' && !disabled) {
+      ctx.onSelect(id || '');
     }
   };
   return (
@@ -36,5 +36,7 @@ const MenuItem: React.FC<IMenuItemProps> = (props) => {
 MenuItem.defaultProps = {
   disabled: false
 };
+
+MenuItem.displayName = 'MenuItem';
 
 export default MenuItem;

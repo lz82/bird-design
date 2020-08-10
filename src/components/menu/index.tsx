@@ -1,9 +1,9 @@
-import React, { CSSProperties, createContext, useState } from 'react';
+import React, { CSSProperties, createContext, useState, ReactNode } from 'react';
 
 import classnames from 'classnames';
 import { IMenuItemProps } from './menu-item';
 
-type SelectClick = (item: IMenuItemProps, key: string) => void;
+type SelectClick = (key: string) => void;
 
 export interface IMenuCtx {
   selectedKey: string;
@@ -25,17 +25,16 @@ export interface IMenuProps {
 }
 
 const Menu: React.FC<IMenuProps> = (props) => {
-  const { children, mode, style, defaultSelectedKey, onSelect } = props;
+  const { children, mode, style, className, defaultSelectedKey, onSelect } = props;
   const [selectedKey, setSelectedKey] = useState(defaultSelectedKey);
-
-  const classNames = classnames('bird-menu', {
+  const classNames = classnames('bird-menu', className, {
     'menu-vertical': mode === 'vertical'
   });
 
-  const handleClick = (item: any, key: string) => {
+  const handleClick = (key: string) => {
     setSelectedKey(key);
     if (onSelect && typeof onSelect === 'function') {
-      onSelect(item, key);
+      onSelect(key);
     }
   };
 
@@ -44,9 +43,20 @@ const Menu: React.FC<IMenuProps> = (props) => {
     onSelect: handleClick
   };
 
+  const renderChildren = (children: ReactNode) => {
+    return React.Children.map(children, (item) => {
+      const element = item as React.FunctionComponentElement<IMenuItemProps>;
+      if (element.type.displayName === 'MenuItem') {
+        return item;
+      } else {
+        console.log('children should be MenuItem');
+      }
+    });
+  };
+
   return (
-    <ul className={classNames} style={style}>
-      <MenuCtx.Provider value={provideVal}>{children}</MenuCtx.Provider>
+    <ul className={classNames} style={style} data-testid="test-menu">
+      <MenuCtx.Provider value={provideVal}>{renderChildren(children)}</MenuCtx.Provider>
     </ul>
   );
 };
@@ -54,5 +64,7 @@ const Menu: React.FC<IMenuProps> = (props) => {
 Menu.defaultProps = {
   mode: 'horizontal'
 };
+
+Menu.displayName = 'Menu';
 
 export default Menu;

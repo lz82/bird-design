@@ -17,13 +17,15 @@ const MenuPreview: React.FC = () => {
           disabled
         </MenuItem>
         <MenuItem id="3">xyz</MenuItem>
+        <li>asdf</li>
       </Menu>
     );
   };
   const menu = generateMenu({
-    mode: 'vertical',
+    // mode: 'vertical',
     defaultSelectedKey: '1',
-    onSelect: (item, id) => {
+    className: 'test',
+    onSelect: (id) => {
       setSelectedMenu(id);
     }
   });
