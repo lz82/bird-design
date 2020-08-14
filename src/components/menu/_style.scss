@@ -7,29 +7,7 @@
   border-bottom: $menu-border-width solid $menu-border-color;
   box-shadow: $menu-box-shadow;
 
-  &.menu-vertical {
-    margin: 0 20px;
-    flex-direction: column;
-    border-bottom: 0;
-    border-right: $menu-border-width solid $menu-border-color;
-
-    .bird-menu-item {
-      // 设为transparent 防止出现抖动
-      border-left: $menu-item-active-border-width solid transparent;
-      &.actived,
-      &:hover {
-        border-bottom: 0;
-        border-left: $menu-item-active-border-width solid $menu-item-active-color;
-      }
-      &.disabled {
-        color: $menu-item-disabled-color;
-        pointer-events: none;
-        cursor: default;
-      }
-    }
-  }
-
-  .bird-menu-item {
+  > .menu-item {
     padding: $menu-item-padding-y $menu-item-padding-x;
     cursor: pointer;
     transition: $menu-transition;
@@ -50,5 +28,67 @@
       color: $menu-item-active-color;
       border-bottom: $menu-item-active-border-width solid $menu-item-active-color;
     }
+  }
+
+  .submenu-item {
+    position: relative;
+
+    .submenu-title {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .bird-submenu {
+    display: none;
+    list-style: none;
+    position: absolute;
+    padding-left: 0;
+    white-space: nowrap;
+    &.open {
+      display: block;
+    }
+
+    .menu-item {
+      padding: $menu-item-padding-y $menu-item-padding-x;
+      cursor: pointer;
+      transition: $menu-transition;
+      color: $body-color;
+      &.actived,
+      &:hover {
+        color: $menu-item-active-color !important;
+      }
+    }
+  }
+}
+.menu-vertical {
+  margin: 0 20px;
+  flex-direction: column;
+  border-bottom: 0;
+  border-right: $menu-border-width solid $menu-border-color;
+
+  > .menu-item {
+    // 设为transparent 防止出现抖动
+    border-left: $menu-item-active-border-width solid transparent;
+    &.actived,
+    &:hover {
+      border-bottom: 0;
+      border-left: $menu-item-active-border-width solid $menu-item-active-color;
+    }
+  }
+}
+
+.menu-horizontal {
+  > .menu-item {
+    border-bottom: $menu-item-active-border-width solid transparent;
+  }
+  .bird-submenu {
+    position: absolute;
+    background: $white;
+    z-index: 100;
+    top: calc(100% + 8px);
+    left: 0;
+    border: $menu-border-width solid $menu-border-color;
+    box-shadow: $submenu-box-shadow;
   }
 }

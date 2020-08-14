@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Menu, { IMenuProps } from '../../components/menu';
 import MenuItem from '../../components/menu/menu-item';
+import SubMenu from '../../components/menu/sub-menu';
 
 const MenuPreview: React.FC = () => {
   const [selectedMenu, setSelectedMenu] = useState('1');
@@ -17,12 +18,18 @@ const MenuPreview: React.FC = () => {
           disabled
         </MenuItem>
         <MenuItem id="3">xyz</MenuItem>
-        <li>asdf</li>
+        <SubMenu id="4" title="submenu">
+          <MenuItem id="4-1">4-1</MenuItem>
+          <MenuItem id="4-2" disabled>
+            4-2
+          </MenuItem>
+          <MenuItem id="4-3">4-3</MenuItem>
+        </SubMenu>
       </Menu>
     );
   };
   const menu = generateMenu({
-    // mode: 'vertical',
+    mode: 'vertical',
     defaultSelectedKey: '1',
     className: 'test',
     onSelect: (id) => {

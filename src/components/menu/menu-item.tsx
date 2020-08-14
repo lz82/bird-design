@@ -13,7 +13,7 @@ const MenuItem: React.FC<IMenuItemProps> = (props) => {
   const { id, disabled, className, style, children } = props;
   const ctx = useContext(MenuCtx);
   const classNames = classnames(
-    'bird-menu-item',
+    'menu-item',
     className,
     { disabled: disabled },
     {

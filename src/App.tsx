@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './App.css';
-
 import './style/index.scss';
 
 import ButtonPreview from './views/button';

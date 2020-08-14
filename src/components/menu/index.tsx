@@ -1,4 +1,10 @@
-import React, { CSSProperties, createContext, useState, ReactNode } from 'react';
+import React, {
+  CSSProperties,
+  createContext,
+  useState,
+  ReactNode,
+  FunctionComponentElement
+} from 'react';
 
 import classnames from 'classnames';
 import { IMenuItemProps } from './menu-item';
@@ -7,10 +13,11 @@ type SelectClick = (key: string) => void;
 
 export interface IMenuCtx {
   selectedKey: string;
+  mode: MenuMode;
   onSelect?: SelectClick;
 }
 
-export const MenuCtx = createContext<IMenuCtx>({ selectedKey: '' });
+export const MenuCtx = createContext<IMenuCtx>({ selectedKey: '', mode: 'horizontal' });
 
 export type MenuMode = 'horizontal' | 'vertical';
 
@@ -28,7 +35,8 @@ const Menu: React.FC<IMenuProps> = (props) => {
   const { children, mode, style, className, defaultSelectedKey, onSelect } = props;
   const [selectedKey, setSelectedKey] = useState(defaultSelectedKey);
   const classNames = classnames('bird-menu', className, {
-    'menu-vertical': mode === 'vertical'
+    'menu-vertical': mode === 'vertical',
+    'menu-horizontal': mode === 'horizontal'
   });
 
   const handleClick = (key: string) => {
@@ -40,16 +48,17 @@ const Menu: React.FC<IMenuProps> = (props) => {
 
   const provideVal: IMenuCtx = {
     selectedKey: selectedKey || '',
+    mode: mode || 'horizontal',
     onSelect: handleClick
   };
 
   const renderChildren = (children: ReactNode) => {
     return React.Children.map(children, (item) => {
-      const element = item as React.FunctionComponentElement<IMenuItemProps>;
-      if (element.type.displayName === 'MenuItem') {
-        return item;
+      const element = item as FunctionComponentElement<IMenuItemProps>;
+      if (element.type.displayName === 'MenuItem' || element.type.displayName === 'SubMenu') {
+        return React.cloneElement(element);
       } else {
-        console.log('children should be MenuItem');
+        // console.log('children should be MenuItem');
       }
     });
   };
