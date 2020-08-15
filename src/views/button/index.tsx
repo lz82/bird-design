@@ -4,7 +4,7 @@ import Button, { ButtonSize, ButtonType } from '../../components/button';
 export default function index() {
   return (
     <div>
-      <h1>Primary Button</h1>
+      <h1>Default Button</h1>
       <Button
         size={ButtonSize.Large}
         onClick={() => {

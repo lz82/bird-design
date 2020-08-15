@@ -1,0 +1,6 @@
+// 使用@each来对$theme-colors进行遍历
+@each $key, $val in $theme-colors {
+  .icon-#{$key} {
+    color: $val;
+  }
+}

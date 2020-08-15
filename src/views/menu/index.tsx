@@ -29,14 +29,30 @@ const MenuPreview: React.FC = () => {
     );
   };
   const menu = generateMenu({
+    defaultSelectedKey: '1',
+    className: 'test',
+    defaultOpenMenus: ['4'],
+    onSelect: (id) => {
+      setSelectedMenu(id);
+    }
+  });
+  const menuVertical = generateMenu({
     mode: 'vertical',
+    defaultOpenMenus: ['4'],
     defaultSelectedKey: '1',
     className: 'test',
     onSelect: (id) => {
       setSelectedMenu(id);
     }
   });
-  return <div>{menu}</div>;
+  return (
+    <>
+      <h2>default menu</h2>
+      <div>{menu}</div>
+      <h2>vertical menu</h2>
+      <div>{menuVertical}</div>
+    </>
+  );
 };
 
 export default MenuPreview;

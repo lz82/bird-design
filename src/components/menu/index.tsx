@@ -14,10 +14,15 @@ type SelectClick = (key: string) => void;
 export interface IMenuCtx {
   selectedKey: string;
   mode: MenuMode;
+  defaultOpenMenu: string[];
   onSelect?: SelectClick;
 }
 
-export const MenuCtx = createContext<IMenuCtx>({ selectedKey: '', mode: 'horizontal' });
+export const MenuCtx = createContext<IMenuCtx>({
+  selectedKey: '',
+  defaultOpenMenu: [],
+  mode: 'horizontal'
+});
 
 export type MenuMode = 'horizontal' | 'vertical';
 
@@ -28,11 +33,20 @@ export interface IMenuProps {
   selectedKey?: string;
   style?: CSSProperties;
   mode?: MenuMode;
+  defaultOpenMenus?: string[];
   onSelect?: SelectClick;
 }
 
 const Menu: React.FC<IMenuProps> = (props) => {
-  const { children, mode, style, className, defaultSelectedKey, onSelect } = props;
+  const {
+    children,
+    mode,
+    style,
+    className,
+    defaultSelectedKey,
+    defaultOpenMenus,
+    onSelect
+  } = props;
   const [selectedKey, setSelectedKey] = useState(defaultSelectedKey);
   const classNames = classnames('bird-menu', className, {
     'menu-vertical': mode === 'vertical',
@@ -49,6 +63,7 @@ const Menu: React.FC<IMenuProps> = (props) => {
   const provideVal: IMenuCtx = {
     selectedKey: selectedKey || '',
     mode: mode || 'horizontal',
+    defaultOpenMenu: defaultOpenMenus || [],
     onSelect: handleClick
   };
 
@@ -58,7 +73,7 @@ const Menu: React.FC<IMenuProps> = (props) => {
       if (element.type.displayName === 'MenuItem' || element.type.displayName === 'SubMenu') {
         return React.cloneElement(element);
       } else {
-        // console.log('children should be MenuItem');
+        console.warn(`Menu's children should be MenuItem`);
       }
     });
   };
@@ -71,7 +86,8 @@ const Menu: React.FC<IMenuProps> = (props) => {
 };
 
 Menu.defaultProps = {
-  mode: 'horizontal'
+  mode: 'horizontal',
+  defaultOpenMenus: []
 };
 
 Menu.displayName = 'Menu';
