@@ -10,6 +10,7 @@ import classnames from 'classnames';
 import { MenuCtx } from './index';
 import { IMenuItemProps } from './menu-item';
 import Icon from '../../components/icon';
+import Transition from '../../components/transition';
 
 export interface ISubMenuProps {
   id: string;
@@ -87,7 +88,9 @@ const SubMenu: React.FC<ISubMenuProps> = (props) => {
         {title}
         <Icon className="arrow-icon" icon="angle-down" />
       </div>
-      <ul className={submenClassnames}>{renderChildren(children)}</ul>
+      <Transition in={menuOpen} animation="zoom-in-top" timeout={200}>
+        <ul className={submenClassnames}>{renderChildren(children)}</ul>
+      </Transition>
     </li>
   );
 };

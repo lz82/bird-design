@@ -1,12 +1,12 @@
 import React from 'react';
-import Button, { ButtonSize, ButtonType } from '../../components/button';
+import Button from '../../components/button';
 
 export default function index() {
   return (
     <div>
       <h1>Default Button</h1>
       <Button
-        size={ButtonSize.Large}
+        size="lg"
         onClick={() => {
           alert('click');
         }}
@@ -14,7 +14,7 @@ export default function index() {
         large default button
       </Button>
       &nbsp;
-      <Button disabled size={ButtonSize.Large}>
+      <Button disabled size="lg">
         large default button
       </Button>
       &nbsp;
@@ -22,86 +22,81 @@ export default function index() {
       &nbsp;
       <Button disabled>normal default button</Button>
       &nbsp;
-      <Button size={ButtonSize.Small}>small default button</Button>
+      <Button size="sm">small default button</Button>
       &nbsp;
-      <Button disabled size={ButtonSize.Small}>
+      <Button disabled size="sm">
         small default button
       </Button>
       <br />
       <br />
       <h1>Primary Button</h1>
-      <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>
+      <Button btnType="primary" size="lg">
         large primary button
       </Button>
       &nbsp;
-      <Button disabled btnType={ButtonType.Primary} size={ButtonSize.Large}>
+      <Button disabled btnType="primary" size="lg">
         large primary button
       </Button>
       &nbsp;
-      <Button btnType={ButtonType.Primary}>normal primary button</Button>
+      <Button btnType="primary">normal primary button</Button>
       &nbsp;
-      <Button disabled btnType={ButtonType.Primary}>
+      <Button disabled btnType="primary">
         normal primary button
       </Button>
       &nbsp;
-      <Button btnType={ButtonType.Primary} size={ButtonSize.Small}>
+      <Button btnType="primary" size="sm">
         small primary button
       </Button>
       &nbsp;
-      <Button disabled btnType={ButtonType.Primary} size={ButtonSize.Small}>
+      <Button disabled btnType="primary" size="sm">
         small primary button
       </Button>
       <br />
       <br />
       <h1>Danger Button</h1>
-      <Button btnType={ButtonType.Danger} size={ButtonSize.Large}>
+      <Button btnType="danger" size="lg">
         large Danger button
       </Button>
       &nbsp;
-      <Button disabled btnType={ButtonType.Danger} size={ButtonSize.Large}>
+      <Button disabled btnType="danger" size="lg">
         large Danger button
       </Button>
       &nbsp;
-      <Button btnType={ButtonType.Danger}>normal Danger button</Button>
+      <Button btnType="danger">normal Danger button</Button>
       &nbsp;
-      <Button disabled btnType={ButtonType.Danger}>
+      <Button disabled btnType="danger">
         normal Danger button
       </Button>
       &nbsp;
-      <Button btnType={ButtonType.Danger} size={ButtonSize.Small}>
+      <Button btnType="danger" size="sm">
         small Danger button
       </Button>
       &nbsp;
-      <Button disabled btnType={ButtonType.Danger} size={ButtonSize.Small}>
+      <Button disabled btnType="danger" size="sm">
         small Danger button
       </Button>
       <br />
       <br />
       <h1>Link Button</h1>
-      <Button btnType={ButtonType.Link} href="http://www.baidu.com" size={ButtonSize.Large}>
+      <Button btnType="link" href="http://www.baidu.com" size="lg">
         large Link button
       </Button>
       &nbsp;
-      <Button
-        disabled
-        btnType={ButtonType.Link}
-        href="http://www.baidu.com"
-        size={ButtonSize.Large}
-      >
+      <Button disabled btnType="link" href="http://www.baidu.com" size="lg">
         large Link button
       </Button>
       &nbsp;
-      <Button btnType={ButtonType.Link} href="http://www.baidu.com">
+      <Button btnType="link" href="http://www.baidu.com">
         normal Link button
       </Button>
       &nbsp;
-      <Button disabled btnType={ButtonType.Link} href="http://www.baidu.com">
+      <Button disabled btnType="link" href="http://www.baidu.com">
         normal Link button
       </Button>
       &nbsp;
       <Button
-        btnType={ButtonType.Link}
-        size={ButtonSize.Small}
+        btnType="link"
+        size="sm"
         href="http://www.baidu.com"
         onClick={() => {
           console.log('aaa');
@@ -112,9 +107,9 @@ export default function index() {
       &nbsp;
       <Button
         disabled
-        btnType={ButtonType.Link}
+        btnType="link"
         href="http://www.baidu.com"
-        size={ButtonSize.Small}
+        size="sm"
         onClick={() => {
           console.log('aaa');
         }}

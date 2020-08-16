@@ -5,6 +5,7 @@ import './style/index.scss';
 import ButtonPreview from './views/button';
 import MenuPreview from './views/menu';
 import IconPreview from './views/icon';
+import Transition from './views/transition';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <ButtonPreview />
       <MenuPreview />
       <IconPreview />
+      <Transition />
     </div>
   );
 }

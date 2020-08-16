@@ -114,3 +114,21 @@
     box-shadow: $submenu-box-shadow;
   }
 }
+
+.submenu-enter {
+  opacity: 0;
+}
+
+.submenu-enter-active {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.submenu-exit {
+  opacity: 1;
+}
+
+.submenu-exit-active {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
