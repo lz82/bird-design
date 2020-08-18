@@ -78,26 +78,26 @@ export default function index() {
       <br />
       <br />
       <h1>Link Button</h1>
-      <Button btnType="link" href="http://www.baidu.com" size="lg">
+      <Button btnType="link" link="http://www.baidu.com" size="lg">
         large Link button
       </Button>
       &nbsp;
-      <Button disabled btnType="link" href="http://www.baidu.com" size="lg">
+      <Button disabled btnType="link" link="http://www.baidu.com" size="lg">
         large Link button
       </Button>
       &nbsp;
-      <Button btnType="link" href="http://www.baidu.com">
+      <Button btnType="link" link="http://www.baidu.com">
         normal Link button
       </Button>
       &nbsp;
-      <Button disabled btnType="link" href="http://www.baidu.com">
+      <Button disabled btnType="link" link="http://www.baidu.com">
         normal Link button
       </Button>
       &nbsp;
       <Button
         btnType="link"
         size="sm"
-        href="http://www.baidu.com"
+        link="http://www.baidu.com"
         onClick={() => {
           console.log('aaa');
         }}
@@ -108,7 +108,7 @@ export default function index() {
       <Button
         disabled
         btnType="link"
-        href="http://www.baidu.com"
+        link="http://www.baidu.com"
         size="sm"
         onClick={() => {
           console.log('aaa');

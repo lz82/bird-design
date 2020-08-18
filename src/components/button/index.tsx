@@ -29,7 +29,7 @@ interface IBaseButtonProps {
   /**
    * 点击按钮后跳转的链接，仅当按钮的btnType为link时有效
    */
-  href?: string;
+  link?: string;
   /**
    * 按钮的子元素，通常为按钮上显示的文字
    */

@@ -25,5 +25,5 @@ Link.args = {
   btnType: 'link',
   size: 'lg',
   text: 'link button',
-  href: 'http://www.baidu.com'
+  link: 'http://www.baidu.com'
 };
